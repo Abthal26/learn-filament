@@ -24,20 +24,36 @@ class TreatmentResource extends Resource
     {
         return $form
             ->schema([
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('price')
-                ->money('EUR')
-                ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                ->dateTime(),
+                Forms\Components\TextInput::make('description')
+                ->required()
+                ->maxLength(255)
+                ->columnSpan('full'),
+                Forms\Components\Textarea::make('notes')
+                ->maxLength(65535)
+                ->columnSpan('full'),
+                Forms\Components\TextInput::make('price')
+                ->numeric()
+                ->prefix('€')
+                ->maxValue(42949672.95),
+                Forms\Components\Select::make('patient_id')
+                ->relationship('patient', 'name')
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->recordTitleAttribute('description')
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('patient.name')->searchable(),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('price')
+                ->money('EUR')
+                ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                ->dateTime(),
+                Tables\Columns\TextColumn::make('notes'),
+
             ])
             ->filters([
                 //

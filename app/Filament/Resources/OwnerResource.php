@@ -6,6 +6,7 @@ use App\Filament\Resources\OwnerResource\Pages;
 use App\Filament\Resources\OwnerResource\RelationManagers;
 use App\Models\Owner;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +24,18 @@ class OwnerResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('email')
+                        ->label('Email address')
+                        ->email()
+                        ->required()
+                        ->maxLength(255),
+                Forms\Components\TextInput::make('name')
+                        ->required()
+                        ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                        ->label('Phone number')
+                        ->tel()
+                        ->required(),
             ]);
     }
 
@@ -31,7 +43,13 @@ class OwnerResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                ->searchable(),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('phone'),
+                
+
             ])
             ->filters([
                 //
