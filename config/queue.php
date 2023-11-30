@@ -34,12 +34,18 @@ return [
             'driver' => 'sync',
         ],
 
-        'database' => [
+        /*'database' => [
             'driver' => 'database',
             'table' => 'jobs',
             'queue' => 'default',
             'retry_after' => 90,
             'after_commit' => false,
+        ],*/
+        'database' => [
+            'driver' => 'database',
+            'table' => 'jobs',
+            'queue' => env('QUEUE_DEFAULT','default'),
+            'retry_after' => 90,
         ],
 
         'beanstalkd' => [

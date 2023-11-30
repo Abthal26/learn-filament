@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'site1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,6 +169,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
+         //Illuminate\Queue\QueueServiceProvider::class,
+        Gecche\Multidomain\Queue\QueueServiceProvider::class,
+        
     ])->toArray(),
 
     /*

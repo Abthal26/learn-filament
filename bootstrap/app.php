@@ -11,9 +11,26 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$domainParams = [
+    'domain_detection_function_web' => function() {
+        return \Illuminate\Support\Arr::get($_SERVER,'HTTP_HOST');
+    }
+
+];
+//$app = new Illuminate\Foundation\Application(
+    $app = new Gecche\Multidomain\Foundation\Application(
+        $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+    );
+
+
+    //$app = new Illuminate\Foundation\Application(
+$app = new Gecche\Multidomain\Foundation\Application(
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__), null, $domainParams
+);
+/*$app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
 
 /*
 |--------------------------------------------------------------------------

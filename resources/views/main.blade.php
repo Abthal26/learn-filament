@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Task ke 2</title>
+    <title>{{ config('app.name') }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-wicdth, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">

@@ -17,3 +17,19 @@ Route::get('/', function () {
     return view('main');
 });
 
+/*Route::group(['domain' => 'site1.com'], function () {
+    // Routing untuk domain pertama
+    Route::get('/', function () {
+        config(['app.name' => 'site 1']);
+        return view('main');
+    });
+});
+
+Route::group(['domain' => 'site2.com'], function () {
+    // Routing untuk domain pertama
+    Route::get('/', function () {
+        config(['app.name' => 'site 2']);
+        return view('main');
+    });
+});
+*/
