@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\ServiceProvider;
+use LaraZeus\Sky\Filament\Resources\PostResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {  
-        Model::unguard();
+       
+        PostResource::navigationSort(100);
+        PostResource::navigationIcon('heroicon-o-home');
+        PostResource::navigationGroup('New Name');
     }
 }
